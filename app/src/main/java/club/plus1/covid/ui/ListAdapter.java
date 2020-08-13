@@ -1,4 +1,4 @@
-package club.plus1.covid;
+package club.plus1.covid.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import club.plus1.covid.R;
+import club.plus1.covid.data.Item;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 

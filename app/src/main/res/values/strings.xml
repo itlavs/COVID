@@ -4,4 +4,5 @@
     <string name="confirmed">Подтверждены\n%2$d (+%1$d)</string>
     <string name="deaths">Умерли\n%2$d (+%1$d)</string>
     <string name="recovered">Вылечились\n%2$d (+%1$d)</string>
+    <string name="error">При загрузке произошла ошибка: %1$s</string>
 </resources>
