@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">COVID</string>
+    <string name="country">Contry:%1$s</string>
+    <string name="confirmed">Подтверждены\n%2$d (+%1$d)</string>
+    <string name="deaths">Умерли\n%2$d (+%1$d)</string>
+    <string name="recovered">Вылечились\n%2$d (+%1$d)</string>
 </resources>

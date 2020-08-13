@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textConfirmed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:text="@string/confirmed" />
+
+        <TextView
+            android:id="@+id/textDeaths"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:padding="5dp"
+            android:text="@string/deaths" />
+
+        <TextView
+            android:id="@+id/textRecovered"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:padding="5dp"
+            android:text="@string/recovered" />
+    </LinearLayout>
+</LinearLayout>
