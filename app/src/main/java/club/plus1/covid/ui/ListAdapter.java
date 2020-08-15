@@ -58,14 +58,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Detail detail = model.list.get(position);
-        holder.textCountry.setText(context.getString(R.string.country,
-                Flags.getFlag(detail.countryCode),detail.country));
-        holder.textTotalConfirmed.setText(context.getString(R.string.total_data, detail.totalConfirmed));
-        holder.textTotalDeaths.setText(context.getString(R.string.total_data, detail.totalDeaths));
-        holder.textTotalRecovered.setText(context.getString(R.string.total_data, detail.totalRecovered));
-        holder.textNewConfirmed.setText(context.getString(R.string.new_data, detail.newConfirmed));
-        holder.textNewDeaths.setText(context.getString(R.string.new_data, detail.newDeaths));
-        holder.textNewRecovered.setText(context.getString(R.string.new_data, detail.newRecovered));
+        holder.textCountry.setText(Countries.getString(context, detail.countryCode));
+        holder.textTotalConfirmed.setText(
+                Countries.getNumber(context, R.string.total_data, detail.totalConfirmed));
+        holder.textTotalDeaths.setText(
+                Countries.getNumber(context, R.string.total_data, detail.totalDeaths));
+        holder.textTotalRecovered.setText(
+                Countries.getNumber(context, R.string.total_data, detail.totalRecovered));
+        holder.textNewConfirmed.setText(
+                Countries.getNumber(context, R.string.new_data, detail.newConfirmed));
+        holder.textNewDeaths.setText(
+                Countries.getNumber(context, R.string.new_data, detail.newDeaths));
+        holder.textNewRecovered.setText(
+                Countries.getNumber(context, R.string.new_data, detail.newRecovered));
     }
 
     @Override

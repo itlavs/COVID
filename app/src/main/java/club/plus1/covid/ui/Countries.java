@@ -1,6 +1,30 @@
 package club.plus1.covid.ui;
 
-public class Flags {
+import android.content.Context;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import club.plus1.covid.App;
+
+public class Countries {
+
+    public static String getString(Context context, String code){
+        return context.getString(club.plus1.covid.R.string.country_data, getFlag(code), getName(code));
+    }
+
+    public static String getNumber(Context context, int resource, int number){
+        return context.getString(resource, NumberFormat.getInstance().format(number));
+    }
+
+    public static String getName(String code){
+        if (code.equals("all")){
+            return App.app.getString(club.plus1.covid.R.string.all);
+        } else {
+            Locale loc = new Locale("", code);
+            return loc.getDisplayCountry();
+        }
+    }
 
     public static String getFlag(String countryCode) {
         String flag;

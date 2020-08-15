@@ -10,7 +10,7 @@
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Искать..."
+        android:queryHint="@string/search"
         android:iconifiedByDefault="false"/>
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="5dp"
-            android:text="@string/all_country"
+            android:text="@string/country"
             android:textSize="24sp" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:background="@color/yellow"
             android:padding="10dp"
-            android:text="@string/all_confirmed"
+            android:text="@string/confirmed"
             android:textAlignment="viewEnd"
             android:textSize="18sp" />
 
@@ -49,7 +49,7 @@
             android:layout_weight="1"
             android:background="@color/green"
             android:padding="10dp"
-            android:text="@string/all_recovered"
+            android:text="@string/recovered"
             android:textAlignment="viewEnd"
             android:textSize="18sp" />
 
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:background="@color/red"
             android:padding="10dp"
-            android:text="@string/all_deaths"
+            android:text="@string/deaths"
             android:textAlignment="viewEnd"
             android:textSize="18sp" />
 

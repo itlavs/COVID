@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.SearchView;
+
+import org.jetbrains.annotations.NotNull;
 
 import club.plus1.covid.R;
 
@@ -38,6 +41,12 @@ public class ListActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
 
+    @Override
+    public void onConfigurationChanged(@NotNull Configuration newConfig)
+    {
+        super.onConfigurationChanged(newConfig);
+        model.update();
     }
 }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COVID</string>
+    <string name="search">Искать</string>
+    <string name="country">Страна</string>
+    <string name="confirmed">Выявлены</string>
+    <string name="deaths">Умерли</string>
+    <string name="recovered">Вылечились</string>
+    <string name="all">Весь мир</string>
+    <string name="error">При загрузке произошла ошибка: %1$s</string>
+    <string name="success">Данные по COVID обновлены</string>
+</resources>

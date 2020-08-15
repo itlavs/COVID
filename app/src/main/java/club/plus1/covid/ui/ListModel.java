@@ -1,13 +1,9 @@
 package club.plus1.covid.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +31,11 @@ public class ListModel {
         return mInstance;
     }
 
+    public void update()
+    {
+        mInstance = new ListModel(adapter.context);
+    }
+
     private ListModel(Context context)
     {
         list = new ArrayList<>();
@@ -55,6 +56,7 @@ public class ListModel {
         list.clear();
         for (Detail detail : data.list){
             Log.d("COVID", detail.toString());
+            detail.country = Countries.getName(detail.countryCode);
             list.add(detail);
         }
         all = data.all;
