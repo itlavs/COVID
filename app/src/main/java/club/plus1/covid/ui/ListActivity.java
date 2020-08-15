@@ -11,6 +11,7 @@ import android.widget.SearchView;
 
 import org.jetbrains.annotations.NotNull;
 
+import club.plus1.covid.App;
 import club.plus1.covid.R;
 
 public class ListActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(getString(R.string.app_name, App.versionName, App.versionCode));
         setContentView(R.layout.list);
         model = ListModel.getInstance(this);
 
