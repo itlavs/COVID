@@ -30,6 +30,8 @@ public class Countries {
         String flag;
         if (countryCode.length() == 2) {
             flag = getCodeByCharacter(countryCode.charAt(0)) + getCodeByCharacter(countryCode.charAt(1));
+        } else if (countryCode.equals("all")) {
+            flag = "\uD83C\uDF0E";
         } else {
             flag = "";
         }

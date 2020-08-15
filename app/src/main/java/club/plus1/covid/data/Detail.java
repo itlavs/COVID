@@ -73,12 +73,14 @@ public class Detail {
         country = "Все случаи";
         countryCode = "all";
         slug = "все";
-        newConfirmed = all.newConfirmed;
-        totalConfirmed = all.totalConfirmed;
-        newRecovered = all.newRecovered;
-        totalRecovered = all.totalRecovered;
-        newDeaths = all.newDeaths;
-        totalDeaths = all.totalDeaths;
-        date = all.date;
+        if (all != null){
+            newConfirmed = all.newConfirmed;
+            totalConfirmed = all.totalConfirmed;
+            newRecovered = all.newRecovered;
+            totalRecovered = all.totalRecovered;
+            newDeaths = all.newDeaths;
+            totalDeaths = all.totalDeaths;
+            date = all.date;
+        }
     }
 }

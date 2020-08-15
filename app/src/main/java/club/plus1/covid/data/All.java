@@ -45,6 +45,16 @@ public class All {
         date = "";
     }
 
+    public All(All global, @NotNull String date) {
+        this.newConfirmed = global.newConfirmed;
+        this.totalConfirmed = global.totalConfirmed;
+        this.newDeaths = global.newDeaths;
+        this.totalDeaths = global.totalDeaths;
+        this.newRecovered = global.newRecovered;
+        this.totalRecovered = global.totalRecovered;
+        this.date = date;
+    }
+
     @Ignore
     @NotNull
     @Override
