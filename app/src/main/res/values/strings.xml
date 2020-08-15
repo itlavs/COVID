@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">COVID</string>
-    <string name="all_confirmed">Выявлены:</string>
-    <string name="all_deaths">Умерли:</string>
-    <string name="all_recovered">Вылечились:</string>
+    <string name="all_country">Страна</string>
+    <string name="all_confirmed">Выявлены</string>
+    <string name="all_deaths">Умерли</string>
+    <string name="all_recovered">Вылечились</string>
     <string name="country">Contry:%1$s</string>
-    <string name="confirmed">%2$d\n+%1$d</string>
-    <string name="deaths">%2$d\n+%1$d</string>
-    <string name="recovered">%2$d\n+%1$d</string>
+    <string name="total_data">%1$d</string>
+    <string name="new_data">+%1$d</string>
     <string name="error">При загрузке произошла ошибка: %1$s</string>
     <string name="success">Данные по COVID загружены</string>
 </resources>

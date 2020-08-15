@@ -25,6 +25,7 @@ public class ListModel {
 
     public ListAdapter adapter;
     public List<Detail> list;
+    public List<Detail> copy;
     public All all;
 
     public static ListModel getInstance(Context context) {
@@ -37,13 +38,15 @@ public class ListModel {
     private ListModel(Context context)
     {
         list = new ArrayList<>();
+        copy = new ArrayList<>();
+        adapter = new ListAdapter(context, this);
         new Thread(() -> {
             list = App.db.detailDao().readAll();
             all = App.db.allDao().read();
+            copy.addAll(list);
             ListAdapter.handler.sendEmptyMessage(0);
         }).start();
         ServerRouter.summary(context, this);
-        adapter = new ListAdapter(context, this);
     }
 
     public void ok(Context context, ServerData data){
@@ -55,6 +58,7 @@ public class ListModel {
         all = data.all;
         all.date = data.date;
         list.add(0, new Detail(all));
+        copy.addAll(list);
         new Thread(() -> {
             App.db.detailDao().deleteAll();
             App.db.detailDao().createAll(list);

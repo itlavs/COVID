@@ -32,6 +32,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         };
     }
 
+    void filter(String text) {
+        model.list.clear();
+        if(text.isEmpty()){
+            model.list.addAll(model.copy);
+        } else{
+            text = text.toLowerCase();
+            for(Detail item: model.copy){
+                if(item.country.toLowerCase().contains(text)){
+                    model.list.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,12 +59,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Detail detail = model.list.get(position);
         holder.textCountry.setText(detail.country);
-        holder.textConfirmed.setText(context.getString(
-                R.string.confirmed, detail.newConfirmed, detail.totalConfirmed));
-        holder.textDeaths.setText(context.getString(
-                R.string.deaths, detail.newDeaths, detail.totalDeaths));
-        holder.textRecovered.setText(context.getString(
-                R.string.recovered, detail.newRecovered, detail.totalRecovered));
+        holder.textTotalConfirmed.setText(context.getString(R.string.total_data, detail.totalConfirmed));
+        holder.textTotalDeaths.setText(context.getString(R.string.total_data, detail.totalDeaths));
+        holder.textTotalRecovered.setText(context.getString(R.string.total_data, detail.totalRecovered));
+        holder.textNewConfirmed.setText(context.getString(R.string.new_data, detail.newConfirmed));
+        holder.textNewDeaths.setText(context.getString(R.string.new_data, detail.newDeaths));
+        holder.textNewRecovered.setText(context.getString(R.string.new_data, detail.newRecovered));
     }
 
     @Override
@@ -60,16 +75,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textCountry;
-        TextView textConfirmed;
-        TextView textDeaths;
-        TextView textRecovered;
+        TextView textTotalConfirmed;
+        TextView textTotalDeaths;
+        TextView textTotalRecovered;
+        TextView textNewConfirmed;
+        TextView textNewDeaths;
+        TextView textNewRecovered;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textCountry = itemView.findViewById(R.id.textCountry);
-            textConfirmed = itemView.findViewById(R.id.textConfirmed);
-            textDeaths = itemView.findViewById(R.id.textDeaths);
-            textRecovered = itemView.findViewById(R.id.textRecovered);
+            textTotalConfirmed = itemView.findViewById(R.id.textTotalConfirmed);
+            textTotalDeaths = itemView.findViewById(R.id.textTotalDeaths);
+            textTotalRecovered = itemView.findViewById(R.id.textTotalRecovered);
+            textNewConfirmed = itemView.findViewById(R.id.textNewConfirmed);
+            textNewDeaths = itemView.findViewById(R.id.textNewDeaths);
+            textNewRecovered = itemView.findViewById(R.id.textNewRecovered);
         }
     }
 }

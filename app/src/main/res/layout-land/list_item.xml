@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginEnd="5dp"
     android:layout_marginBottom="0dp"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/textCountry"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingStart="5dp"
         android:text="@string/country"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tools:ignore="RtlSymmetry" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textTotalConfirmed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@color/yellow"
             android:paddingStart="0dp"
             android:paddingTop="10dp"
@@ -35,10 +40,29 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/textNewConfirmed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/yellow"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/new_data"
+            android:textAlignment="viewEnd" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
             android:id="@+id/textTotalRecovered"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@color/green"
             android:paddingStart="0dp"
             android:paddingTop="10dp"
@@ -49,10 +73,29 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/textNewRecovered"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/green"
+            android:paddingStart="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/new_data"
+            android:textAlignment="viewEnd" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
             android:id="@+id/textTotalDeaths"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@color/red"
             android:paddingStart="0dp"
             android:paddingTop="10dp"
@@ -61,45 +104,11 @@
             android:text="@string/total_data"
             android:textAlignment="viewEnd"
             android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="0dp">
-
-        <TextView
-            android:id="@+id/textNewConfirmed"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/yellow"
-            android:paddingStart="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/new_data"
-            android:textAlignment="viewEnd" />
-
-        <TextView
-            android:id="@+id/textNewRecovered"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/green"
-            android:paddingStart="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/new_data"
-            android:textAlignment="viewEnd" />
 
         <TextView
             android:id="@+id/textNewDeaths"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:background="@color/red"
             android:paddingStart="0dp"
             android:paddingTop="0dp"
