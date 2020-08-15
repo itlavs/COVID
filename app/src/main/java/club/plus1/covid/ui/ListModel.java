@@ -41,6 +41,8 @@ public class ListModel {
         copy = new ArrayList<>();
         adapter = new ListAdapter(context, this);
         new Thread(() -> {
+            list.clear();
+            all = null;
             list = App.db.detailDao().readAll();
             all = App.db.allDao().read();
             copy.addAll(list);
@@ -60,10 +62,8 @@ public class ListModel {
         list.add(0, new Detail(all));
         copy.addAll(list);
         new Thread(() -> {
-            App.db.detailDao().deleteAll();
-            App.db.detailDao().createAll(list);
-            App.db.allDao().delete();
-            App.db.allDao().create(all);
+            App.db.detailDao().updateAll(list);
+            App.db.allDao().update(all);
             ListAdapter.handler.sendEmptyMessage(0);
         }).start();
         Toast.makeText(context, R.string.success, Toast.LENGTH_LONG).show();

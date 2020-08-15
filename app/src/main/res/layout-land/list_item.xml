@@ -37,7 +37,7 @@
             android:paddingBottom="0dp"
             android:text="@string/total_data"
             android:textAlignment="viewEnd"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textNewConfirmed"
@@ -70,7 +70,7 @@
             android:paddingBottom="0dp"
             android:text="@string/total_data"
             android:textAlignment="viewEnd"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textNewRecovered"
@@ -103,7 +103,7 @@
             android:paddingBottom="0dp"
             android:text="@string/total_data"
             android:textAlignment="viewEnd"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textNewDeaths"
