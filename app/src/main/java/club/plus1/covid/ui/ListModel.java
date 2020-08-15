@@ -2,7 +2,6 @@ package club.plus1.covid.ui;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,10 +22,8 @@ public class ListModel {
     public List<Detail> list;
     public List<Detail> copy;
     public All all;
-    public int countrySort;
-    public int confirmedSort;
-    public int deathsSort;
-    public int recoveredSort;
+    public ListSorting sort;
+    public String search;
 
     public static ListModel getInstance(Context context) {
         if (mInstance == null) {
@@ -42,21 +39,19 @@ public class ListModel {
 
     private ListModel(Context context)
     {
-        countrySort = 2;
-        confirmedSort = 0;
-        deathsSort = 0;
-        recoveredSort = 0;
+        search = "";
+        sort = new ListSorting(this, 2, 0, 0, 0);
         list = new ArrayList<>();
         copy = new ArrayList<>();
         adapter = new ListAdapter(context, this);
         new Thread(() -> {
+            all = null;
             list.clear();
             copy.clear();
-            all = null;
-            list = App.db.detailDao().readAll();
             all = App.db.allDao().read();
-            copy.addAll(list);
+            list = App.db.detailDao().readAll();
             list.add(0, new Detail(all));
+            copy.addAll(list);
             ListAdapter.handler.sendEmptyMessage(0);
         }).start();
         ServerRouter.summary(context, this);
@@ -75,15 +70,7 @@ public class ListModel {
                 App.db.detailDao().create(detail);
             }
             list.clear();
-            if (countrySort != 0)
-                sortData("country", countrySort);
-            if (confirmedSort != 0)
-                sortData("totalConfirmed", confirmedSort);
-            if (deathsSort != 0)
-                sortData("totalDeaths", deathsSort);
-            if (recoveredSort != 0)
-                sortData("totalRecovered", recoveredSort);
-
+            sort.sorting();
             list.add(0, new Detail(all));
             copy.clear();
             copy.addAll(list);
@@ -96,58 +83,5 @@ public class ListModel {
     public void error(Context context, Throwable error){
         Log.e(context.getString(R.string.app_name), context.getString(R.string.error, error));
         Toast.makeText(context, context.getString(R.string.error, error), Toast.LENGTH_LONG).show();
-    }
-
-    private void sortData(String sortColumn, int direction){
-        new Thread(() -> {
-            list.clear();
-            copy.clear();
-            switch (sortColumn) {
-                case "country":
-                    list = App.db.detailDao().sortCountries(direction);
-                    break;
-                case "totalConfirmed":
-                    list = App.db.detailDao().sortConfirmed(direction);
-                    break;
-                case "totalDeaths":
-                    list = App.db.detailDao().sortDeaths(direction);
-                    break;
-                case "totalRecovered":
-                    list = App.db.detailDao().sortRecovered(direction);
-                    break;
-                default:
-                    list = App.db.detailDao().readAll();
-                    break;
-            }
-            copy.addAll(list);
-            list.add(0, new Detail(all));
-            ListAdapter.handler.sendEmptyMessage(0);
-        }).start();
-    }
-
-    public void setAllSort(String sortColumn, int direction,
-            TextView country, TextView confirmed, TextView deaths, TextView recovered){
-        sortData(sortColumn, direction);
-        setSort(country, countrySort);
-        setSort(confirmed, confirmedSort);
-        setSort(deaths, deathsSort);
-        setSort(recovered, recoveredSort);
-    }
-
-    void setSort(TextView textView, int sortType){
-        int sortRes;
-        if (sortType > 0)
-            if (sortType == 2)
-                sortRes = R.drawable.sort_az;
-            else
-                sortRes = R.drawable.sort_asc;
-        else if (sortType < 0)
-            if (sortType == -2)
-                sortRes = R.drawable.sort_za;
-            else
-                sortRes = R.drawable.sort_desc;
-        else
-            sortRes = R.drawable.empty;
-        textView.setCompoundDrawablesWithIntrinsicBounds(sortRes, 0, 0, 0);
     }
 }

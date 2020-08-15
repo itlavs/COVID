@@ -32,7 +32,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         };
     }
 
-    void filter(String text) {
+    void filter() {
+        String text = model.search;
         model.list.clear();
         if(text.isEmpty()){
             model.list.addAll(model.copy);
