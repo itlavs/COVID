@@ -1,6 +1,9 @@
 package club.plus1.covid.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,43 +12,52 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import club.plus1.covid.R;
-import club.plus1.covid.data.Item;
+import club.plus1.covid.data.Detail;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    Context context;
-    List<Item> list;
+    public Context context;
+    ListModel model;
+    static Handler handler;
 
-    public ListAdapter(Context context, List<Item> list) {
+    @SuppressLint("HandlerLeak")
+    public ListAdapter(Context context, ListModel model) {
         this.context = context;
-        this.list = list;
+        this.model = model;
+        handler = new Handler(){
+            public void handleMessage(@NonNull Message message){
+                notifyDataSetChanged();
+            }
+        };
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new ViewHolder((view));
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Item item = list.get(position);
-        holder.textCountry.setText(item.country);
-        holder.textConfirmed.setText(context.getString(R.string.confirmed, item.newConfirmed, item.totalConfirmed));
-        holder.textDeaths.setText(context.getString(R.string.deaths, item.newDeaths, item.totalDeaths));
-        holder.textRecovered.setText(context.getString(R.string.recovered, item.newRecovered, item.totalRecovered));
+        Detail detail = model.list.get(position);
+        holder.textCountry.setText(detail.country);
+        holder.textConfirmed.setText(context.getString(
+                R.string.confirmed, detail.newConfirmed, detail.totalConfirmed));
+        holder.textDeaths.setText(context.getString(
+                R.string.deaths, detail.newDeaths, detail.totalDeaths));
+        holder.textRecovered.setText(context.getString(
+                R.string.recovered, detail.newRecovered, detail.totalRecovered));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return model.list.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textCountry;
         TextView textConfirmed;

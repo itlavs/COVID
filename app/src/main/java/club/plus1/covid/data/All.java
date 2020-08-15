@@ -1,23 +1,21 @@
 package club.plus1.covid.data;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Item {
+@Entity (tableName = "global")
+public class All {
 
-    @SerializedName("Country")
-    @Expose
-    public String country;
-
-    @SerializedName("CountryCode")
-    @Expose
-    public String countryCode;
-
-    @SerializedName("Slug")
-    @Expose
-    public String slug;
+    @PrimaryKey
+    @NonNull
+    public String date;
 
     @SerializedName("NewConfirmed")
     @Expose
@@ -43,13 +41,16 @@ public class Item {
     @Expose
     public int totalRecovered;
 
-    @SerializedName("Date")
-    @Expose
-    public String date;
+    public All() {
+        date = "";
+    }
 
+    @Ignore
     @NotNull
     @Override
     public String toString(){
-        return country;
+        return "(!:" + totalConfirmed + "+" + newConfirmed + ", X:"
+                + totalDeaths + "+" + newDeaths + ", V:" + totalRecovered + "+" + newRecovered + ")";
     }
+
 }

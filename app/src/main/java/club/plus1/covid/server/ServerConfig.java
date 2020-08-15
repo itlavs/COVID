@@ -42,7 +42,7 @@ public class ServerConfig {
         try{
             OkHttpClient okHttpClient = getUnsafeOkHttpClient();
 
-            Gson gson = new GsonBuilder().setLenient().create();
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setLenient().create();
             Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                     //Базовая часть адреса
                     .baseUrl(ServerAPI.BASE_URL)

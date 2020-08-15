@@ -33,19 +33,24 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    // Retrofit, okhttp, gson
+    // Web (Retrofit, okhttp, gson)
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
     implementation 'com.squareup.okhttp3:okhttp:4.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    // RxJava
+    // Reactive (RxJava)
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
 
-    // Testing
+    // DB (Room)
+    implementation 'androidx.room:room-runtime:2.2.5'
+    testImplementation 'androidx.room:room-testing:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+    // Testing (JUnit, Espresso)
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

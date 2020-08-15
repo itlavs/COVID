@@ -6,6 +6,46 @@
     android:orientation="vertical"
     tools:context=".ui.ListActivity" >
 
+    <LinearLayout
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textConfirmed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/yellow"
+            android:padding="5dp"
+            android:text="@string/all_confirmed"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textRecovered"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:padding="5dp"
+            android:text="@string/all_recovered"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textDeaths"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/red"
+            android:padding="5dp"
+            android:text="@string/all_deaths"
+            android:textAlignment="center" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
