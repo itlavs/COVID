@@ -72,7 +72,17 @@ public class ListSorting {
             }
             model.copy.addAll(model.list);
             model.list.add(0, new Detail(model.all));
-            model.adapter.filter();
+
+            if(!model.search.isEmpty()){
+                String text = model.search.toLowerCase();
+                model.list.clear();
+                for(Detail item: model.copy){
+                    if(item.country.toLowerCase().contains(text)){
+                        model.list.add(item);
+                    }
+                }
+            }
+
             ListAdapter.handler.sendEmptyMessage(0);
         }).start();
     }
