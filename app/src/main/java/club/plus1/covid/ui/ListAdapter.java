@@ -28,6 +28,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         handler = new Handler(){
             public void handleMessage(@NonNull Message message){
                 notifyDataSetChanged();
+                ((ListActivity) context).refreshView.setRefreshing(false);
             }
         };
     }

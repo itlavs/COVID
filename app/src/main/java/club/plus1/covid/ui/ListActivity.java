@@ -3,6 +3,7 @@ package club.plus1.covid.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -19,11 +20,12 @@ public class ListActivity extends AppCompatActivity {
     ListModel model;
     RecyclerView recyclerView;
     SearchView searchView;
+    SwipeRefreshLayout refreshView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(getString(R.string.app_name, App.versionName, App.versionCode));
+        setTitle(getString(R.string.app_version, App.versionName, App.versionCode));
         setContentView(R.layout.list);
         model = ListModel.getInstance(this);
 
@@ -33,6 +35,10 @@ public class ListActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.search);
         searchView.setOnQueryTextListener(searchListener);
+
+        refreshView = findViewById(R.id.refresh);
+        refreshView.setRefreshing(true);
+        refreshView.setOnRefreshListener(model::update);
 
         model.sort.textCountry = findViewById(R.id.textCountry);
         model.sort.textCountry.setOnClickListener(countryClickListener);
@@ -45,6 +51,7 @@ public class ListActivity extends AppCompatActivity {
         model.sort.country = 2;
         model.sort.sorting();
         model.sort.setIcons();
+        refreshView.setRefreshing(false);
     }
 
     @Override
